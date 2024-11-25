@@ -44,19 +44,15 @@
 		)
     };
     
-   tap_dances {
-    shifty: shift_caps_word_capslock {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_SHF_CAPS";
-        #binding-cells = <0>;
-        tapping-term-ms = <150>;  // Time window for detecting multiple taps (adjust as needed)
-        bindings = <
-            &kp LSHFT,         // One tap: regular Shift
-            &caps_word,        // Two taps: Caps Word
-            &caps_lock         // Three taps: Caps Lock
-        >;
+    tap_dances {
+    	shifty: shift_caps_word {
+		compatible = "zmk,behavior-tap-dance";
+		label = "TD_SHIFTY";
+		#binding-cells = <0>;
+		tapping-term-ms = <150>;
+		bindings = <&kp LSHFT>, <&caps_word>, <&caps_lock>;
+	};
     };
-};
 
 // Conditional layer only when we have less thumb keys
 #ifdef TBLE_DUAL_2U
@@ -145,4 +141,3 @@
 
     };
 };
-
